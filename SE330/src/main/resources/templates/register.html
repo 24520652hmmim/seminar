@@ -3,47 +3,88 @@
 
 <head>
     <title>Student Course Registration</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
             background: #f4f6f8;
             padding: 40px;
+            margin: 0;
         }
 
         .container {
-            width: 460px;
+            width: 500px;
             margin: auto;
             background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #ccc;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px #ccc;
         }
 
         h2 {
             text-align: center;
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 18px;
+            font-weight: bold;
         }
 
         label {
             font-weight: bold;
+            display: block;
+            margin-bottom: 6px;
         }
 
         input,
         select {
             width: 100%;
-            padding: 10px;
-            margin: 8px 0 18px 0;
+            padding: 11px;
+            margin-bottom: 18px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 4px #93c5fd;
+        }
+
+        .course-note {
+            background: #eff6ff;
+            color: #1e40af;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            margin-bottom: 18px;
         }
 
         button {
             width: 100%;
-            padding: 12px;
+            padding: 13px;
             background: #2563eb;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             font-size: 15px;
+            font-weight: bold;
         }
 
         button:hover {
@@ -51,20 +92,31 @@
             cursor: pointer;
         }
 
-        .error {
-            background: #fee2e2;
-            color: #991b1b;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 15px;
-        }
-
         .link {
             display: block;
-            margin-top: 18px;
+            margin-top: 20px;
             text-align: center;
             color: #2563eb;
             text-decoration: none;
+            font-weight: bold;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .architecture-box {
+            margin-top: 25px;
+            background: #f9fafb;
+            border-left: 4px solid #2563eb;
+            padding: 12px;
+            font-size: 13px;
+            color: #374151;
+            line-height: 1.6;
+        }
+
+        .architecture-box b {
+            color: #111827;
         }
     </style>
 </head>
@@ -73,6 +125,7 @@
 
     <div class="container">
         <h2>Student Course Registration</h2>
+        <p class="subtitle">Spring MVC Architecture Demo</p>
 
         <div class="error" th:if="${error}" th:text="${error}"></div>
 
@@ -81,7 +134,7 @@
             <input type="text" th:field="*{name}" placeholder="Enter student name">
 
             <label>Email:</label>
-            <input type="email" th:field="*{email}" placeholder="Enter email">
+            <input type="email" th:field="*{email}" placeholder="Enter email address">
 
             <label>Student ID:</label>
             <input type="text" th:field="*{studentId}" placeholder="Enter student ID">
@@ -95,17 +148,26 @@
                 <option value="Software Engineering">Software Engineering - 280 AUD</option>
             </select>
 
+            <div class="course-note">
+                The course fee will be calculated automatically by the Service layer.
+            </div>
+
             <label>Study Mode:</label>
             <select th:field="*{studyMode}">
-                <option value="">-- Select Mode --</option>
+                <option value="">-- Select Study Mode --</option>
                 <option value="Online">Online</option>
                 <option value="Offline">Offline</option>
             </select>
 
-            <button type="submit">Register</button>
+            <button type="submit">Register Student</button>
         </form>
 
         <a class="link" href="/students">View registered students</a>
+
+        <div class="architecture-box">
+            <b>Architecture Flow:</b><br>
+            Browser → StudentController → StudentService → Student Model → Thymeleaf View
+        </div>
     </div>
 
 </body>

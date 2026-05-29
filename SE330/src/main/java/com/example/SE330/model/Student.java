@@ -1,23 +1,46 @@
 package com.example.SE330.model;
 
 public class Student {
+    private int id;
+    private String registrationCode;
     private String name;
     private String email;
     private String studentId;
     private String course;
     private String studyMode;
     private int fee;
+    private String registrationTime;
 
     public Student() {
     }
 
-    public Student(String name, String email, String studentId, String course, String studyMode, int fee) {
+    public Student(int id, String registrationCode, String name, String email, String studentId,
+            String course, String studyMode, int fee, String registrationTime) {
+        this.id = id;
+        this.registrationCode = registrationCode;
         this.name = name;
         this.email = email;
         this.studentId = studentId;
         this.course = course;
         this.studyMode = studyMode;
         this.fee = fee;
+        this.registrationTime = registrationTime;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getRegistrationCode() {
+        return registrationCode;
+    }
+
+    public void setRegistrationCode(String registrationCode) {
+        this.registrationCode = registrationCode;
     }
 
     public String getName() {
@@ -66,5 +89,13 @@ public class Student {
 
     public void setFee(int fee) {
         this.fee = fee;
+    }
+
+    public String getRegistrationTime() {
+        return registrationTime;
+    }
+
+    public void setRegistrationTime(String registrationTime) {
+        this.registrationTime = registrationTime;
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class StudentController {
@@ -48,6 +49,17 @@ public class StudentController {
     @GetMapping("/students")
     public String showAllStudents(Model model) {
         model.addAttribute("students", studentService.getAllRegisteredStudents());
+        model.addAttribute("totalStudents", studentService.getTotalStudents());
+        model.addAttribute("onlineStudents", studentService.getOnlineStudents());
+        model.addAttribute("offlineStudents", studentService.getOfflineStudents());
+        model.addAttribute("totalRevenue", studentService.getTotalRevenue());
+
         return "students";
+    }
+
+    @GetMapping("/students/delete/{id}")
+    public String deleteStudent(@PathVariable int id) {
+        studentService.deleteStudent(id);
+        return "redirect:/students";
     }
 }
