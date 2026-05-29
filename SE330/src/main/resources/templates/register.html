@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Student Course Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 40px;
+        }
+
+        .container {
+            width: 460px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 18px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+            cursor: pointer;
+        }
+
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .link {
+            display: block;
+            margin-top: 18px;
+            text-align: center;
+            color: #2563eb;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Student Course Registration</h2>
+
+        <div class="error" th:if="${error}" th:text="${error}"></div>
+
+        <form th:action="@{/register}" th:object="${student}" method="post">
+            <label>Name:</label>
+            <input type="text" th:field="*{name}" placeholder="Enter student name">
+
+            <label>Email:</label>
+            <input type="email" th:field="*{email}" placeholder="Enter email">
+
+            <label>Student ID:</label>
+            <input type="text" th:field="*{studentId}" placeholder="Enter student ID">
+
+            <label>Course:</label>
+            <select th:field="*{course}">
+                <option value="">-- Select Course --</option>
+                <option value="Spring Architecture">Spring Architecture - 300 AUD</option>
+                <option value="Java Backend">Java Backend - 250 AUD</option>
+                <option value="Database System">Database System - 220 AUD</option>
+                <option value="Software Engineering">Software Engineering - 280 AUD</option>
+            </select>
+
+            <label>Study Mode:</label>
+            <select th:field="*{studyMode}">
+                <option value="">-- Select Mode --</option>
+                <option value="Online">Online</option>
+                <option value="Offline">Offline</option>
+            </select>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <a class="link" href="/students">View registered students</a>
+    </div>
+
+</body>
+
+</html>

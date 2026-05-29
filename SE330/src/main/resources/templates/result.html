@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Registration Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 40px;
+        }
+
+        .container {
+            width: 500px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        h2 {
+            text-align: center;
+            color: #16a34a;
+        }
+
+        .message {
+            background: #dcfce7;
+            color: #166534;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .info {
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #2563eb;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Registration Successful</h2>
+
+        <p class="message" th:text="${message}"></p>
+
+        <div class="info">
+            <p><b>Name:</b> <span th:text="${student.name}"></span></p>
+            <p><b>Email:</b> <span th:text="${student.email}"></span></p>
+            <p><b>Student ID:</b> <span th:text="${student.studentId}"></span></p>
+            <p><b>Course:</b> <span th:text="${student.course}"></span></p>
+            <p><b>Study Mode:</b> <span th:text="${student.studyMode}"></span></p>
+            <p><b>Course Fee:</b> <span th:text="${student.fee}"></span> AUD</p>
+        </div>
+
+        <a href="/register">Register another student</a>
+        <a href="/students">View all registered students</a>
+    </div>
+
+</body>
+
+</html>
